@@ -1,0 +1,26 @@
+﻿@model webBH.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Loại sản phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Quay lại", "Index")
+</p>

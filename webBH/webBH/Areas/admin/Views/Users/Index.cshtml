@@ -1,0 +1,53 @@
+﻿@model IEnumerable<webBH.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách khách hàng</h2>
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.birthday)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.GenderString)*@
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>*@
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.id }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

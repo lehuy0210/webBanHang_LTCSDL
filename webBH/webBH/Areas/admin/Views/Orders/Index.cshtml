@@ -1,0 +1,61 @@
+﻿@model IEnumerable<webBH.Models.Order>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table class="table" style="margin-top: 5vh">
+        <tr>
+            <th>
+                @Html.DisplayName("Ngày đặt")
+            </th>
+            <th>
+                @Html.DisplayName("Tên khách hàng")
+            </th>
+            <th>
+                @Html.DisplayName("Tổng tiền")
+            </th>
+            <th>
+                @Html.DisplayName("Phương thức vận chuyển")
+            </th>
+            <th>
+                @Html.DisplayName("Phương thức thanh toán")
+            </th>
+
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+                        <td>
+                @Html.DisplayFor(modelItem => item.User.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total_money) đ
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Delivery.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Payment.name)
+            </td>
+
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.id }) |*@
+                @Html.ActionLink("Chi tiết", "Details", new { id=item.id }) |
+                @Html.ActionLink("Xóa", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

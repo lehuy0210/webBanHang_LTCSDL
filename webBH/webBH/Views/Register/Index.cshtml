@@ -1,0 +1,54 @@
+﻿
+@model webBH.Models.User
+@{
+    ViewBag.Title = "Register";
+}
+
+@{
+    Layout = null;
+}
+@Styles.Render("~/Content/RegisterStyle.css")
+
+
+@using (Html.BeginForm())
+{ 
+    @Html.AntiForgeryToken()
+<div class="wrapper">
+    <div class="title">
+        Đăng ký
+    </div>
+    <div class="form">
+        <div class="inputfield">
+            <label>Họ và tên</label>
+            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "input" } })
+            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+        </div>
+        <div class="inputfield">
+            <label>Ngày sinh</label>
+            @Html.EditorFor(model => model.birthday, new { htmlAttributes = new { @class = "input", type = "date" } })
+        </div>
+        <div class="inputfield">
+            <label>Email</label>
+            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "input" } })
+            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+        </div>
+        <div class="inputfield">
+            <label>Mật khẩu</label>
+            @Html.PasswordFor(m => m.password, new { @class = "input", placeholder = "Nhập mật khẩu", autocomplete = "off" })
+        </div>
+        <div class="inputfield">
+            <label>Giới tính</label>
+            <div class="custom_select">
+                @Html.RadioButtonFor(m => m.sex, "1", new { @checked = true }) Nữ
+                @Html.RadioButtonFor(m => m.sex, "2") Nam
+            </div>
+        </div>
+        <div class="inputfield terms">
+            <p>Đã có tài khoản @Html.ActionLink("Đăng nhập tại đây !", "Index", "Login") </p>
+        </div>
+        <div class="inputfield">
+            <input type="submit" value="Tạo tài khoản" class="btn" />
+        </div>
+    </div>
+</div>
+}

@@ -1,0 +1,49 @@
+﻿
+@model webBH.Models.User
+
+@{
+    Layout = "~/Views/Shared/LayoutBlank.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @*@Html.AntiForgeryToken()
+        <div>
+            @Html.LabelFor(m => m.email)
+            @Html.TextBoxFor(m => m.email)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.password)
+            @Html.PasswordFor(m => m.password, new { @class = "form-control", placeholder = "Confirm password", autocomplete = "off" })
+        </div>
+        <button type="submit">Login</button>*@
+    @Html.AntiForgeryToken()
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form action="">
+                    <h2 style="color: #dfe6e9">Đăng nhập</h2>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        @Html.TextBoxFor(m => m.email, new { @class = "form-control",placeholder="email" })
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        @Html.PasswordFor(m => m.password, new { @class = "form-control", placeholder = "password", autocomplete = "off" })
+                    </div>
+                    <div class="forget">
+                        <label for=""><input type="checkbox">Ghi nhớ đăng nhập </label>
+
+                    </div>
+                    <button>Đăng nhập</button>
+                    <div class="register">
+                        <p>Không có tài khoản @Html.ActionLink("đăng ký tại đây !","Index", "Register") </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+}

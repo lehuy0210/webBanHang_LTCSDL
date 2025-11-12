@@ -1,0 +1,125 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using webBH.Models;
+
+namespace webBH.Controllers
+{
+    public class ProductsController : Controller
+    {
+        private webBHEntities db = new webBHEntities();
+
+        // GET: Products
+
+        public ActionResult Ao(string currentFilter, int? page, int id_category = 0, string SearchString = "")
+        {
+
+            if (SearchString != "")
+            {
+                page = 1;
+                var products = db.Products.Include(s => s.Category).Where(x => x.name.ToUpper().Contains(SearchString.ToUpper()));
+                return View(products.ToList());
+            }
+            else
+            {
+                //SearchString = currentFilter;
+                var products = db.Products.Where(s => s.id_category == 1);
+                return View(products.ToList());
+            }
+
+            ViewBag.CurrentFilter = currentFilter;
+            //if(id_category == 0)
+            //{
+            //    int pageSize = 8;
+            //    int pageNumber = (page ?? 1);
+            //    var products = db.Products.Include(s => s.Category).OrderBy(x => x.name);
+            //    return View(products.ToPagedList(pageNumber, pageSize));
+            //}
+            //else
+            //{
+            //    var products = db.Products.Include(s => s.Category).Where(x => x.id_category == id_category);
+            //    return View(products.ToList());
+            //}
+            if (Session["UserId"] != null && Session["UserEmail"] != null)
+            {
+                var products = db.Products.Include(p => p.Category);
+                // Người dùng đã đăng nhập, hiển thị trang thông tin cá nhân
+                int userId = Convert.ToInt32(Session["UserId"]);
+                string username = Session["UserEmail"].ToString();
+
+                // Lấy thông tin người dùng từ CSDL bằng UserId hoặc Username
+                User user = db.Users.Find(userId);
+
+                return View(products.ToList());
+            }
+            else
+            {
+                // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("index", "login");
+            }
+        }
+        public ActionResult Quan(string currentFilter, int? page, int id_category = 0, string SearchString = "")
+        {
+
+            if (SearchString != "")
+            {
+                page = 1;
+                var products = db.Products.Include(s => s.Category).Where(x => x.name.ToUpper().Contains(SearchString.ToUpper()));
+                return View(products.ToList());
+            }
+            else
+            {
+                //SearchString = currentFilter;
+                var products = db.Products.Where(s => s.id_category == 2);
+                return View(products.ToList());
+            }
+
+            ViewBag.CurrentFilter = currentFilter;
+            //if(id_category == 0)
+            //{
+            //    int pageSize = 8;
+            //    int pageNumber = (page ?? 1);
+            //    var products = db.Products.Include(s => s.Category).OrderBy(x => x.name);
+            //    return View(products.ToPagedList(pageNumber, pageSize));
+            //}
+            //else
+            //{
+            //    var products = db.Products.Include(s => s.Category).Where(x => x.id_category == id_category);
+            //    return View(products.ToList());
+            //}
+            if (Session["UserId"] != null && Session["UserEmail"] != null)
+            {
+                var products = db.Products.Include(p => p.Category);
+                // Người dùng đã đăng nhập, hiển thị trang thông tin cá nhân
+                int userId = Convert.ToInt32(Session["UserId"]);
+                string username = Session["UserEmail"].ToString();
+
+                // Lấy thông tin người dùng từ CSDL bằng UserId hoặc Username
+                User user = db.Users.Find(userId);
+
+                return View(products.ToList());
+            }
+            else
+            {
+                // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                return RedirectToAction("index", "login");
+            }
+        }
+
+
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

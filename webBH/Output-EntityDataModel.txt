@@ -1,0 +1,15 @@
+﻿Generated model file: BanHangEF.edmx.
+Loading metadata from the database took 00:00:00.6998723.
+Generating the model took 00:00:01.5706820.
+Generated model file: BanHangEF.edmx.
+Loading metadata from the database took 00:00:00.5367145.
+Generating the model took 00:00:01.3518768.
+Generated model file: BanHangEF.edmx.
+Loading metadata from the database took 00:00:00.5089319.
+Generating the model took 00:00:00.3726923.
+Generated model file: BanHangEF.edmx.
+Loading metadata from the database took 00:00:00.4514699.
+Generating the model took 00:00:00.3482768.
+Generated model file: BanHangEF.edmx.
+Loading metadata from the database took 00:00:00.5916536.
+Generating the model took 00:00:01.3432518.

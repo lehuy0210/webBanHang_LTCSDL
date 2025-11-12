@@ -1,0 +1,45 @@
+﻿@*@model PagedList.IPagedList<webBH.Models.Product>*@
+@model IEnumerable<webBH.Models.Product>
+@using webBH.Models
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+}
+@Styles.Render("~/Content/HomeStyle.css")
+@Styles.Render("~/Content/all.min.css")
+
+<div class="products" style="margin-top: 3vw">
+    @foreach (var item in Model)
+    {
+        <div class="product">
+            <div class="image">
+
+                @Html.Image("../" + item.image, "", "")
+            </div>
+
+            <h3 class="nameProduct"> @Html.DisplayFor(m => item.name) </h3>
+
+            <span class="price"> @Html.DisplayFor(m => item.price) đ</span>
+
+            <div class="footer" style="margin-top: 10px">
+                <div class="detail">
+                    <button> @Html.ActionLink("Xem chi tiết", "Detail", new { id = item.id }) </button>
+                </div>
+                <div class="bay">
+                    @if (Session["UserId"] != null)
+                    {
+                        @Html.ActionLink("Thêm vào giỏ hàng", "AddToCart", "Cart", new { id_product = item.id, id_user = Session["UserId"] }, null)
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Thêm vào giỏ hàng", "Index", "Login")
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+@Html.GetSession("UserId")
+

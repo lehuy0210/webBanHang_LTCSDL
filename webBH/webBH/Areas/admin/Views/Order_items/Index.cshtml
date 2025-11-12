@@ -1,0 +1,55 @@
+﻿@model IEnumerable<webBH.Models.Order_items>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.quanlity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.total_money)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.name)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.quanlity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total_money)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_order)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

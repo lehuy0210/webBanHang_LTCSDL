@@ -1,0 +1,49 @@
+﻿@model webBH.Models.Product
+@using webBH.Models
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/Content/DetailStyle.css")
+
+</head>
+<body>
+    <div style="margin-top: 40px">
+        <div class="main-wrapper">
+            <div class="container">
+                <div class="product-div">
+                    <div class="product-info">
+                        <div class="product-div-left">
+                            <div class="img-container">
+                                @Html.Image("../../" + Model.image, "", "")
+                            </div>
+                        </div>
+                        <div class="product-div-right">
+                            <span class="product-name">
+                                @Html.DisplayFor(model => model.name)
+                            </span>
+                            <span class="product-description">Kích cỡ: @Html.DisplayFor(model => model.size)</span>
+                            <span class="product-description">Màu sắc: @Html.DisplayFor(model => model.color)</span>
+                            <span class="product-description">Loại sản phẩm: @Html.DisplayFor(model => model.Category.name)</span>
+                            <span class="product-description" style="font-weight:bolder">Giá: @Html.DisplayFor(model => model.price)  đ</span>
+
+
+
+                            <div class="btn-groups">
+                                @Html.ActionLink("Thêm vào giỏ hàng", "AddToCart", "Cart", new { id_product = Model.id, id_user = Session["UserId"] }, new { @class = "buy-now-btn" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="flex product-table">
+                        <BiddingTable class="table" />
+                    </div>
+                </div>
+                <WinningBid />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

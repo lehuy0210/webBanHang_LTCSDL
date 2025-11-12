@@ -1,0 +1,76 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+@Styles.Render("~/Content/CartStyle.css")
+
+<body>
+    @model List<webBH.Models.Cart>
+    @using webBH.Models
+    @using PagedList.Mvc
+    <div>
+        <div class="shopping-cart" style="margin-top: 15vh">
+
+            <div class="column-labels">
+                <label class="product-image">Image</label>
+                <label class="product-details">Product</label>
+                <label class="product-price">Giá</label>
+                <label class="product-quantity">Số lượng</label>
+                <label class="product-removal">Xóa</label>
+                <label class="product-line-price">Tổng</label>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="product">
+                    <div class="product-image">
+                        @Html.Image("../" + item.Product.image, "", "")
+                    </div>
+                    <div class="product-details">
+
+                        @Html.DisplayFor(modelItem => item.Product.name, new { @class = "product-tittle" })
+                    </div>
+                    <div class="product-price">
+
+                        @Html.DisplayFor(modelItem => item.Product.price, new { @class = "product-price" })
+                    </div>
+                    <form action="@Url.Action("Update", "Cart")" method="post">
+                        <div class="product-quantity">
+                            <input type="hidden" name="id" value="@item.id" />
+                            <input type="hidden" name="id_product" value="@item.id_product" />
+                            <input type="number" min="1" name="quantity" value="@item.quantity" />
+                            @*<input type="submit" value="Cập nhật " class="update-product" />*@
+                        </div>
+                        <div class="product-removal">
+                            <input type="submit" value="Cập nhật " class="update-product" />
+                            @Html.ActionLink("Xóa", "Delete", new { id = item.id }, new { @class = "remove-product" })
+                        </div>
+                    </form>
+
+
+                    <div class="product-line-price">@Html.DisplayFor(modelItem => item.total_money) đ</div>
+                </div>
+            }
+
+            <div class="totals">
+                <div class="totals-item totals-item-total">
+                    <label>Tổng tiền</label>
+                    <div class="totals-value" id="cart-total">@ViewBag.total đ</div>
+                </div>
+            </div>
+
+            @Html.ActionLink("Thanh toán", "Order", null, new { @class = "checkout" })
+
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var message = '@TempData["Message"]';
+    if (message) {
+        alert(message);
+    }
+</script>

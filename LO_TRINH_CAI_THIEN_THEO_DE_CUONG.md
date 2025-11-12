@@ -1178,6 +1178,53 @@ var orderService = new OrderService(new SendGridService());  // Dùng SendGrid
 
 ### 🎨 **MÔN 3: HTML5/CSS3/ES6**
 
+**Đề cương chi tiết:**
+
+#### **HTML5 (12 chương):**
+1. Giới Thiệu HTML5
+2. Cấu Trúc Cơ Bản HTML
+3. Thẻ Văn Bản Và Định Dạng
+4. Links Và Navigation
+5. Hình Ảnh Và Multimedia
+6. Tables
+7. **Forms Và Input** ⭐ (Cần cho Login/Register/Cart)
+8. **HTML5 Semantic Elements** ⭐⭐ (section, article, header, footer, nav)
+9. **HTML5 APIs** ⭐ (LocalStorage, Geolocation, Drag & Drop)
+10. Canvas Và SVG
+11. **Storage Và Offline** ⭐ (LocalStorage cho giỏ hàng offline)
+12. **Best Practices Và Optimization** ⭐⭐ (SEO, Accessibility)
+
+#### **CSS3 (12 chương):**
+1. Giới thiệu CSS3
+2. **Selectors** ⭐ (class, id, attribute, pseudo-class)
+3. Colors Backgrounds
+4. **Box Model Sizing** ⭐ (margin, padding, border)
+5. Typography Fonts
+6. **Flexbox** ⭐⭐⭐ (thay thế float)
+7. **Grid Layout** ⭐⭐⭐ (bố cục hiện đại)
+8. **Transitions** ⭐⭐ (hover effects)
+9. **Animations** ⭐⭐ (fade in, slide, etc.)
+10. **Transforms** ⭐ (rotate, scale, translate)
+11. **Media Queries Responsive** ⭐⭐⭐ (mobile-first)
+12. **Advanced Topics** ⭐⭐ (CSS Variables, Custom Properties)
+
+#### **ES6 (15 chương):**
+1. Giới thiệu ES6
+2. **Let, Const và Block Scope** ⭐⭐ (thay var)
+3. **Arrow Functions** ⭐⭐⭐ (=> syntax)
+4. **Template Literals** ⭐⭐ (backticks)
+5. **Destructuring** ⭐⭐⭐ (object/array destructuring)
+6. **Spread và Rest Operators** ⭐⭐ (...syntax)
+7. **Classes** ⭐⭐⭐ (OOP trong JS)
+8. **Modules** ⭐⭐ (import/export)
+9. **Promises** ⭐⭐⭐ (xử lý async)
+10. Default Parameters ⭐
+11. Enhanced Object Literals ⭐
+12. **Async/Await** ⭐⭐⭐ (AJAX calls)
+13. Map, Set, WeakMap, WeakSet ⭐
+14. Symbols
+15. Iterators và Generators ⭐
+
 #### **Trạng thái Frontend hiện tại:**
 
 | Công nghệ | Version hiện tại | Version mới nhất | Độ lạc hậu |
@@ -1186,9 +1233,9 @@ var orderService = new OrderService(new SendGridService());  // Dùng SendGrid
 | jQuery | 3.4.1 (2019) | 3.7.1 (2023) | 4 năm |
 | JavaScript | ES5 | ES2023 | Cũ |
 
-**💡 Đề xuất nâng cấp:**
+**💡 Đề xuất nâng cấp dựa trên đề cương:**
 
-#### **1. Modernize HTML5**
+#### **1. Modernize HTML5** (Áp dụng Chương 8 - HTML5 Semantic Elements)
 
 **Thêm Semantic HTML5:**
 ```html
@@ -1216,7 +1263,7 @@ var orderService = new OrderService(new SendGridService());  // Dùng SendGrid
 </main>
 ```
 
-**Thêm Meta tags cho SEO:**
+**Thêm Meta tags cho SEO:** (Chương 12 - Best Practices)
 ```html
 <!-- File: Views/Shared/_Layout.cshtml -->
 <head>
@@ -1243,9 +1290,9 @@ var orderService = new OrderService(new SendGridService());  // Dùng SendGrid
 
 ---
 
-#### **2. Upgrade CSS3**
+#### **2. Upgrade CSS3** (Áp dụng Chương 6, 7, 8, 9, 10, 11, 12)
 
-**Dùng CSS Variables thay magic colors:**
+**Dùng CSS Variables thay magic colors:** (Chương 12 - Advanced Topics)
 ```css
 /* File: Content/Site.css */
 
@@ -1289,7 +1336,7 @@ var orderService = new OrderService(new SendGridService());  // Dùng SendGrid
 }
 ```
 
-**Dùng Flexbox/Grid thay float:**
+**Dùng Flexbox/Grid thay float:** (Chương 6 - Flexbox, Chương 7 - Grid Layout)
 ```css
 /* BAD - Hiện tại (float) */
 .product-image {
@@ -1324,7 +1371,7 @@ var orderService = new OrderService(new SendGridService());  // Dùng SendGrid
 }
 ```
 
-**Thêm Animations:**
+**Thêm Animations:** (Chương 8 - Transitions, Chương 9 - Animations, Chương 10 - Transforms)
 ```css
 /* File: Content/Site.css */
 
@@ -1371,9 +1418,9 @@ var orderService = new OrderService(new SendGridService());  // Dùng SendGrid
 
 ---
 
-#### **3. Upgrade JavaScript ES6+**
+#### **3. Upgrade JavaScript ES6+** (Áp dụng 15 chương ES6)
 
-**Thay thế jQuery bằng Vanilla JS:**
+**Thay thế jQuery bằng Vanilla JS:** (Chương 3 - Arrow Functions, Chương 5 - Destructuring)
 ```javascript
 // BAD - jQuery (cũ)
 $(document).ready(function() {
@@ -1396,7 +1443,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Async/Await cho AJAX
+// Async/Await cho AJAX (Chương 12 - Async/Await, Chương 9 - Promises)
 async function addToCart(productId) {
     try {
         const response = await fetch('/Cart/AddToCart', {
@@ -1419,13 +1466,13 @@ async function addToCart(productId) {
     }
 }
 
-// Destructuring
+// Destructuring (Chương 5 - Destructuring)
 const { id, name, price } = product;
 
-// Spread operator
+// Spread operator (Chương 6 - Spread và Rest Operators)
 const newCart = [...cart, newItem];
 
-// Classes (OOP trong JS)
+// Classes (OOP trong JS) - (Chương 7 - Classes)
 class ShoppingCart {
     constructor() {
         this.items = [];
@@ -1540,7 +1587,10 @@ console.log(cart.getTotal());
 - `Views/**/*.cshtml`
 - `Scripts/*.js`
 
-**Áp dụng kiến thức:** 300 bài tập HTML5/CSS3/ES6
+**Áp dụng kiến thức:**
+- HTML5: Chương 7 (Forms), Chương 8 (Semantic), Chương 12 (Best Practices)
+- CSS3: Chương 6 (Flexbox), Chương 7 (Grid), Chương 9 (Animations), Chương 11 (Responsive)
+- ES6: Chương 3 (Arrow Functions), Chương 5 (Destructuring), Chương 7 (Classes), Chương 12 (Async/Await)
 
 ---
 
@@ -1581,8 +1631,10 @@ console.log(cart.getTotal());
 - **Làm:** 1 bộ CRUD API hoàn chỉnh
 
 ### Giai đoạn 5 (Frontend):
-- **Đọc:** 300 bài tập HTML5/CSS3/ES6
-- **Làm:** 20-30 bài từ mỗi phần
+- **Đọc HTML5:** Chương 7, 8, 9, 12 (Forms, Semantic, APIs, Best Practices)
+- **Đọc CSS3:** Chương 6, 7, 9, 11, 12 (Flexbox, Grid, Animations, Responsive, Advanced)
+- **Đọc ES6:** Chương 2, 3, 5, 6, 7, 9, 12 (Let/Const, Arrow Functions, Destructuring, Spread, Classes, Promises, Async/Await)
+- **Làm:** Refactor từng trang một (Login → Cart → Home → Products)
 
 ---
 
@@ -1635,6 +1687,9 @@ Dựa trên đề cương môn học, project cần tập trung cải thiện:
 - ⭐⭐ Chương 4: Interfaces & Polymorphism
 
 **3. HTML5/CSS3/ES6:**
+- HTML5: Chương 8 (Semantic Elements), Chương 12 (Best Practices)
+- CSS3: Chương 6 (Flexbox), Chương 7 (Grid), Chương 9 (Animations)
+- ES6: Chương 3, 5, 7, 12 (Arrow Functions, Destructuring, Classes, Async/Await)
 - ⭐ Modernize frontend (nice to have)
 
 **Ưu tiên thực hiện:** 1 → 2 → 3
